@@ -1,0 +1,1339 @@
+/* 全局重置 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= 全局标题字重重置（防止浏览器默认粗体） ================= */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* ================= 1. 桌面端基础样式 ================= */
+
+.site-header {
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32px;
+}
+
+.logo img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #2c3e50;
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-item:hover {
+  color: #007bff;
+}
+
+/* 汉堡包按钮 */
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hamburger-btn .bar {
+  width: 22px;
+  height: 2px;
+  background-color: #2c3e50;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger-btn.active .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-btn.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.active .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* 下拉菜单 */
+.dropdown {
+  position: relative;
+}
+
+.arrow {
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0b192c;
+  min-width: 180px;
+  padding: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  margin-top: 12px;
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+}
+
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  .dropdown:hover .arrow {
+    transform: rotate(180deg);
+  }
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #1e3e62;
+  color: #38bdf8;
+}
+
+.lang-icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.dropdown-menu.lang-menu {
+  left: auto;
+  right: 0;
+  transform: none;
+  min-width: 120px;
+}
+
+.lang-menu a {
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ================= 2. 全屏 Hero 头图区 ================= */
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  min-height: calc(100dvh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 8%;
+  box-sizing: border-box;
+  overflow: visible;
+
+  background-image: url('images/home/hero.jpg');
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  text-align: left;
+  margin-top: -60px;
+}
+
+.hero-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  margin: 0;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  font-size: clamp(1.5rem, 3.2vw, 2.375rem);
+}
+
+
+/* ================= 3. 白色悬浮卡片 ================= */
+
+.floating-features-card {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88%;
+  max-width: 1140px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  z-index: 100;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 32px 0;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  border-right: 1px solid #e2e8f0;
+}
+
+.feature-item:last-child {
+  border-right: none;
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.feature-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e293b;
+  line-height: 1.45;
+  margin: 0;
+}
+
+
+/* ================= 4. 图文介绍区（左图右文） ================= */
+
+.about-intro {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 150px 0 100px 0;
+}
+
+.intro-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start !important;
+}
+
+.intro-image {
+  width: 100%;
+  border-radius: 0 !important;
+  overflow: hidden;
+  display: block;
+}
+
+.intro-image img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0 !important;
+}
+
+.intro-content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.intro-content h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #0f172a;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 24px;
+}
+
+.intro-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 18px;
+}
+
+.intro-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* 1. 图文介绍区标题 */
+.intro-content h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  /* 修改为 500 */
+  color: #0f172a;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+/* ================= 5. 移动端响应式 (<= 768px) ================= */
+
+@media (max-width: 768px) {
+  .nav-container {
+    height: 64px;
+    padding: 0 20px;
+  }
+
+  .logo img {
+    height: 28px;
+  }
+
+  .hamburger-btn {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    border-top: 1px solid #f0f0f0;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease-in-out, opacity 0.25s ease;
+  }
+
+  .nav-menu.active {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  .nav-item {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 15px;
+    justify-content: space-between;
+    border-bottom: 1px solid #f8fafc;
+  }
+
+  #solutionsDropdown .dropdown-menu {
+    position: static;
+    transform: none;
+    background-color: #f8fafc;
+    box-shadow: none;
+    border-radius: 0;
+    min-width: 100%;
+    margin-top: 0;
+    padding: 0;
+    display: none;
+  }
+
+  #solutionsDropdown .dropdown-menu::before {
+    display: none;
+  }
+
+  #solutionsDropdown.open .dropdown-menu {
+    display: block;
+  }
+
+  #solutionsDropdown.open .arrow {
+    transform: rotate(180deg);
+  }
+
+  #solutionsDropdown .dropdown-menu a {
+    color: #475569;
+    padding: 12px 36px;
+    font-size: 14px;
+    border-bottom: 1px solid #edf2f7;
+    text-align: left;
+  }
+
+  .lang-dropdown .dropdown-menu {
+    display: block;
+    top: calc(100% + 10px);
+    right: 0;
+    left: auto;
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s;
+  }
+
+  .lang-dropdown.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .lang-dropdown.open .arrow {
+    transform: rotate(180deg);
+  }
+
+  .hero {
+    min-height: calc(100dvh - 64px);
+    justify-content: center;
+    padding: 80px 0 140px 0;
+    background-position: 85% center;
+  }
+
+  .hero-overlay {
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 100%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 100%;
+    margin-top: -30px;
+    padding: 0 20px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .floating-features-card {
+    width: 100%;
+    border-radius: 0;
+    grid-template-columns: repeat(3, 1fr);
+    bottom: -45px;
+    padding: 18px 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .feature-item {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 6px;
+    border-right: 1px solid #e2e8f0;
+  }
+
+  .feature-item:last-child {
+    border-right: none;
+  }
+
+  .feature-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+
+  .feature-text {
+    font-size: 11px;
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .about-intro {
+    padding: 90px 20px 60px 20px;
+  }
+
+  .intro-container {
+    padding: 0;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .intro-image {
+    border-radius: 0 !important;
+  }
+
+  .intro-content h2 {
+    font-size: 1.35rem;
+    margin-bottom: 16px;
+  }
+
+  .intro-content p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* ================= 全球水资源压力暗黑数据区 ================= */
+
+.water-stress-section {
+  width: 100%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 80px 0;
+  box-sizing: border-box;
+}
+
+.water-stress-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.stress-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 54px;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+/* 2. 暗黑数据区标题 */
+.stress-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  /* 可选：若觉得 500 太细，可用 600 */
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 54px;
+  color: #ffffff;
+}
+
+.count-number {
+  font-size: 1.1em;
+  color: #ffffff;
+}
+
+/* 图例区 */
+.legend-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #333333;
+  padding-bottom: 20px;
+}
+
+.legend-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  flex: 1;
+  max-width: 850px;
+}
+
+.legend-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition-delay: calc(var(--delay) * 0.12s);
+}
+
+.water-stress-section.is-active .legend-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.color-bar {
+  height: 12px;
+  width: 100%;
+}
+
+.color-1 {
+  background-color: #a50f15;
+}
+
+.color-2 {
+  background-color: #de2d26;
+}
+
+.color-3 {
+  background-color: #f97316;
+}
+
+.color-4 {
+  background-color: #facc15;
+}
+
+.color-5 {
+  background-color: #fef08a;
+}
+
+.color-6 {
+  background-color: #6b7280;
+}
+
+.legend-text {
+  font-size: 11px;
+  color: #cbd5e1;
+  line-height: 1.25;
+}
+
+.map-container {
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.map-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.stress-content {
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stress-content h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.stress-content p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #cbd5e1;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.stress-source {
+  font-size: 12px !important;
+  color: #64748b !important;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* ================= 移动端适配 (<= 768px) ================= */
+@media (max-width: 768px) {
+  .water-stress-container {
+    padding: 0 20px;
+  }
+
+  .water-stress-section {
+    padding: 50px 0;
+  }
+
+  .legend-wrapper {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .legend-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 12px;
+    width: 100%;
+  }
+
+  .legend-item {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .map-container {
+    margin-bottom: 40px;
+  }
+
+  .stress-content p {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .stress-source {
+    text-align: center !important;
+  }
+}
+
+/* ================= 全球干旱与水资源分布（浅色报告区块） ================= */
+
+.drought-report-section {
+  width: 100%;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  padding: 90px 0;
+  box-sizing: border-box;
+}
+
+.drought-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.fade-tier {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+
+.fade-tier.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.report-intro {
+  margin-bottom: 70px;
+}
+
+.report-intro p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333333;
+  text-align: center;
+  margin: 0;
+}
+
+.chart-block {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.chart-block:last-child {
+  margin-bottom: 0;
+}
+
+.chart-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  color: #000000;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.chart-subtitle {
+  font-size: 13px;
+  color: #666666;
+  margin: 0 0 28px 0;
+}
+
+/* 3. 浅色报告区标题 */
+.chart-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  /* 修改为 500 */
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  color: #000000;
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.map-wrapper {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.map-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-source {
+  font-size: 12px;
+  color: #777777;
+  line-height: 1.5;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .drought-report-section {
+    padding: 50px 0;
+  }
+
+  .report-intro {
+    margin-bottom: 50px;
+  }
+
+  .report-intro p {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .chart-block {
+    margin-bottom: 50px;
+  }
+
+  .chart-subtitle {
+    font-size: 12px;
+  }
+
+  .chart-source {
+    font-size: 11px;
+  }
+}
+
+/* ================= 暖浅灰杂志风交错图文区块 ================= */
+
+.water-impact-section {
+  width: 100%;
+  background-color: #f4f4f3;
+  color: #222222;
+  padding: 100px 0;
+  box-sizing: border-box;
+}
+
+.water-impact-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+}
+
+.impact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.impact-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.impact-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+  color: #111111;
+  margin-bottom: 24px;
+  line-height: 1.25;
+}
+
+.impact-text-col p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #444444;
+  margin-bottom: 16px;
+}
+
+.impact-text-col p:last-child {
+  margin-bottom: 0;
+}
+
+.impact-card-col {
+  width: 100%;
+}
+
+/* 4. 杂志风交错图文标题 */
+.impact-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  /* 修改为 500 */
+  font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+  color: #111111;
+  margin-bottom: 24px;
+  line-height: 1.25;
+}
+
+.card-image-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  aspect-ratio: 4 / 3;
+}
+
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+  color: #ffffff;
+  padding: 36px;
+  box-sizing: border-box;
+}
+
+.card-overlay.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.overlay-desc {
+  font-size: 15px;
+  line-height: 1.4;
+  color: #e2e8f0;
+  margin-bottom: 12px;
+  max-width: 80%;
+}
+
+.overlay-stat-huge {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  color: #ffffff;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.card-overlay.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.stat-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-num {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  color: #ffffff;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  line-height: 1.35;
+  color: #cbd5e1;
+  max-width: 85%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .water-impact-section {
+    padding: 60px 0;
+  }
+
+  .water-impact-container {
+    gap: 60px;
+  }
+
+  .impact-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .impact-row.reverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .card-overlay {
+    padding: 24px;
+  }
+
+  .overlay-desc {
+    font-size: 13px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+  }
+}
+
+/* ================= Slogan 全宽横幅区块 ================= */
+
+.slogan-banner-section {
+  position: relative;
+  width: 100%;
+  min-height: 440px;
+  background-image: url('images/home/cta.jpg');
+  background-size: cover;
+  background-position: center right;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.slogan-banner-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+      rgba(15, 23, 42, 0.75) 0%,
+      rgba(15, 23, 42, 0.35) 50%,
+      rgba(15, 23, 42, 0) 80%);
+  pointer-events: none;
+}
+
+.slogan-banner-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 48px;
+  box-sizing: border-box;
+}
+
+.slogan-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 650px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .slogan-banner-section {
+    min-height: 320px;
+    justify-content: center;
+    background-position: center;
+  }
+
+  .slogan-banner-section::before {
+    background: radial-gradient(circle at center, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0.75) 100%);
+  }
+
+  .slogan-banner-container {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .slogan-title {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}
+
+/* ================= 7. 页脚 (Footer) 样式 ================= */
+
+.site-footer {
+  width: 100%;
+  background-color: #1a5fae;
+  color: #ffffff;
+  padding: 70px 0 30px 0;
+  box-sizing: border-box;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1.4fr 1fr 1.2fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.brand-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  display: block;
+  width: 100%;
+}
+
+.footer-logo img {
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+  display: block;
+}
+
+/* ★ 页脚标题改为 500 (Medium) */
+.footer-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-arrow {
+  display: none;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: #e0f2fe;
+  text-decoration: none;
+  font-size: 13.5px;
+  line-height: 1.5;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-phone {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.contact-email {
+  color: #e0f2fe;
+  font-size: 13.5px;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contact-email:hover,
+.contact-phone:hover {
+  text-decoration: underline;
+}
+
+.contact-address {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #bfdbfe;
+  margin-top: 4px;
+}
+
+.footer-bottom-container {
+  max-width: 1200px;
+  margin: 50px auto 0 auto;
+  padding: 0 32px;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin-bottom: 24px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 13px;
+  color: #bfdbfe;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 50px 0 24px 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0 20px;
+  }
+
+  .brand-col {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .accordion-col {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .accordion-toggle {
+    margin: 0;
+    padding: 16px 0;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .accordion-arrow {
+    display: inline-block;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease-in-out, opacity 0.25s ease, padding 0.35s ease;
+    padding-bottom: 0;
+  }
+
+  .accordion-col.is-open .accordion-content {
+    max-height: 300px;
+    opacity: 1;
+    padding-bottom: 18px;
+  }
+
+  .accordion-col.is-open .accordion-arrow {
+    transform: rotate(180deg);
+  }
+
+  .contact-col {
+    padding-top: 24px;
+  }
+
+  .contact-col .footer-title {
+    margin-bottom: 14px;
+  }
+
+  .footer-bottom-container {
+    margin-top: 32px;
+    padding: 0 20px;
+  }
+
+  .footer-divider {
+    margin-bottom: 18px;
+  }
+}
